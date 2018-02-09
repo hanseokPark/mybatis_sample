@@ -34,16 +34,17 @@
 	</select>
 	
 	<!-- insert -->
-	<sql id="insertSQL">
-		INSERT INTO STUDENTS(STUD_ID, NAME, EMAIL, PHONE, DOB)
-		VALUES(#{studId), #{name}, #{email}, #{phone}, #{dob})
+	<sql id="insertSql">
+		insert into students(stud_id, name, email, phone, dob) 
+        values(#{studId}, #{name}, #{email}, #{phone}, #{dob})
 	</sql>
+	
 	<insert id="insertStudent" parameterType="Student">
-		<include refid="insertSQL"/>
-	</insert>
-	<insert id="insertStudentWithAPI" parameterType="Student">
-		<include refid="insertSQL"/>
+		<include refid="insertSql"/>
 	</insert>
 	
+	<insert id="insertStudentWithAPI" parameterType="Student">
+		<include refid="insertSql"/>
+	</insert>
 	
 </mapper>

@@ -13,7 +13,7 @@ import kr.or.dgit.mybatis_study_util.MyBatisSqlSessionFactory;
 
 public class StudentService {
 	private static final Log log = LogFactory.getLog(StudentService.class);
-	private String namespace = "kr.or.dgit.mybatis_sample_teacher.dao.StudentDao.";
+	private String namespace = "kr.or.dgit.mybatis_sample.dao.StudentDao.";
 
 	public Student findStudentByNo(Student student) {
 		log.debug("findStudentByNo()");
@@ -45,7 +45,7 @@ public class StudentService {
 		}
 	}
 
-	public int createStudent(Student student) {
+	public int insertStudent(Student student) {
 		log.debug("createStudent()");
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
 			StudentDao studentDao = sqlSession.getMapper(StudentDao.class);
@@ -56,7 +56,7 @@ public class StudentService {
 
 	}
 
-	public int createStudentWithAPI(Student student) {
+	public int insertStudentWithAPI(Student student) {
 		log.debug("createStudentWithAPI()");
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
 			int res = sqlSession.insert(namespace + "insertStudentWithAPI", student);
