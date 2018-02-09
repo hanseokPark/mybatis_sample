@@ -10,7 +10,7 @@ public class Student {
 	private Date dob;
 	
 	
-	private Student() {}
+	public Student() {}
 	
 	
 	public Student(int studId) {

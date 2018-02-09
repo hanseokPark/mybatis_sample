@@ -36,4 +36,20 @@ public class StudentService {
 			return res;
 		}
 	}
+	public int updateStudentWithAPI(Student student) {
+		log.debug("updateStudentWithAPI()");
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
+			int res = sqlSession.update(namespace + "updateStudentWithAPI", student);
+			sqlSession.commit();
+			return res;
+		}
+	}
+	public int deleteStudentWithAPI(int studId) {
+		log.debug("deleteStudentWithAPI()");
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
+			int res = sqlSession.delete(namespace + "deleteStudentWithAPI", studId);
+			sqlSession.commit();
+			return res;
+		}
+	}
 }
