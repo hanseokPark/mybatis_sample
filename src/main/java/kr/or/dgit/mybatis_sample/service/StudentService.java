@@ -13,8 +13,7 @@ import kr.or.dgit.mybatis_study_util.MyBatisSqlSessionFactory;
 
 public class StudentService {
 	private static final Log log = LogFactory.getLog(StudentService.class);
-	private String namespace = "kr.or.dgit.mybatis_sample.dao.StudentDao.";
-
+	
 	public Student findStudentByNo(Student student) {
 		log.debug("findStudentByNo()");
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
@@ -32,8 +31,7 @@ public class StudentService {
 	}
 
 	
-
-	public int insertStudent(Student student) {
+	public int createStudent(Student student) {
 		log.debug("createStudent()");
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
 			StudentDao studentDao = sqlSession.getMapper(StudentDao.class);
@@ -41,7 +39,26 @@ public class StudentService {
 			sqlSession.commit();
 			return res;
 		}
-
+	}
+	
+	public int updateStudent(Student student) {
+		log.debug("updateStudent()");
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
+			StudentDao studentDao = sqlSession.getMapper(StudentDao.class);
+			int res = studentDao.updateStudent(student);
+			sqlSession.commit();
+			return res;
+		}
+	}
+	
+	public int deleteStudent(int studId) {
+		log.debug("updateStudent()");
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
+			StudentDao studentDao = sqlSession.getMapper(StudentDao.class);
+			int res = studentDao.deleteStudent(studId);
+			sqlSession.commit();
+			return res;
+		}
 	}
 
 }
