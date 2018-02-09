@@ -1,4 +1,4 @@
-package kr.or.dgit.mybatis_study;
+package kr.or.dgit.mybatis_sample;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import kr.or.dgit.mybatis_study_util.MyBatisSqlSessionFactory;
 
-public class MybatisSqlSessionFactoryTest {
+public class MyBatisSqlSessionFactoryTest {
 	private static SqlSessionFactory factory;
 	
 	@BeforeClass
