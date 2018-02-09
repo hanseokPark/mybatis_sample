@@ -24,14 +24,7 @@
 		<!-- SELECT stud_id, name, email, phone FROM students -->
 	</select>
 	
-	<select id="selectStudentByNoWithAPI" parameterType="Student" resultType="Student">
-		<include refid="selectSql"></include>
-		<include refid="whereSql"></include>
-	</select>
-	
-	<select id="selectStudentByAllWithAPI" resultType="Student">
-		<include refid="selectSql"></include>
-	</select>
+
 	
 	<!-- insert -->
 	<sql id="insertSql">
@@ -43,8 +36,6 @@
 		<include refid="insertSql"/>
 	</insert>
 	
-	<insert id="insertStudentWithAPI" parameterType="Student">
-		<include refid="insertSql"/>
-	</insert>
+	
 	
 </mapper>
