@@ -16,6 +16,15 @@ public class Student {
 	public Student(int studId) {
 		this.studId = studId;
 	}
+	public Student(int studId, String name, String email, Date dob, PhoneNumber phoneNumber) {
+		this.studId = studId;
+		this.name = name;
+		this.email = email;
+		this.dob = dob;
+		this.phone = phoneNumber;
+	}
+
+
 	public int getStudId() {
 		return studId;
 	}

@@ -23,4 +23,27 @@
 		<include refid="selectSql"></include>
 		<!-- SELECT stud_id, name, email, phone FROM students -->
 	</select>
+	
+	<select id="selectStudentByNoWithAPI" parameterType="Student" resultType="Student">
+		<include refid="selectSql"></include>
+		<include refid="whereSql"></include>
+	</select>
+	
+	<select id="selectStudentByAllWithAPI" resultType="Student">
+		<include refid="selectSql"></include>
+	</select>
+	
+	<!-- insert -->
+	<sql id="insertSQL">
+		INSERT INTO STUDENTS(STUD_ID, NAME, EMAIL, PHONE, DOB)
+		VALUES(#{studId), #{name}, #{email}, #{phone}, #{dob})
+	</sql>
+	<insert id="insertStudent" parameterType="Student">
+		<include refid="insertSQL"/>
+	</insert>
+	<insert id="insertStudentWithAPI" parameterType="Student">
+		<include refid="insertSQL"/>
+	</insert>
+	
+	
 </mapper>
