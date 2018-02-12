@@ -70,6 +70,12 @@
 		<include refid="selectSql2" />
 	</select>
 	
+	<select id ="selectStudentByAllForHashMap" resultType="map">
+		<include refid="selectSql2"/>
+	</select>
+	
+	
+	
 </mapper>
 
 
