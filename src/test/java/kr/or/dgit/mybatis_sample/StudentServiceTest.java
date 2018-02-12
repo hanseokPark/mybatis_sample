@@ -113,5 +113,13 @@ public class StudentServiceTest {
 		Assert.assertEquals(extStd.getStudId(), extStd2.getStudId());
 		
 	}
-	
+	@Test
+	public void test9SelectStudentByNoAssociation() {
+		Student student = new Student();
+		student.setStudId(1);
+		
+		Student extStd = service.selectStudentByNoForResultMapExtends(student);
+
+		Assert.assertSame(1, extStd.getStudId());
+	}
 }

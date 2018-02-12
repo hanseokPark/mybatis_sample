@@ -68,6 +68,7 @@ public class StudentService {
 			return studentDao.selectStudentByAllForResultMap();
 		}
 	}
+
 	public List<Map<String, Object>> selectStudentByAllForHashMap() {
 		log.debug("selectStudentByAllForHashMap()");
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
@@ -75,6 +76,7 @@ public class StudentService {
 			return studentDao.selectStudentByAllForHashMap();
 		}
 	}
+
 	public Student selectStudentByNoForResultMapExtends(Student student) {
 		log.debug("selectStudentByNoForResultMapExtends()");
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
@@ -82,5 +84,12 @@ public class StudentService {
 			return studentDao.selectStudentByNoForResultMapExtends(student);
 		}
 	}
-	
+
+	public Student selectStudentByNoAssociation(Student student) {
+		log.debug("selectStudentByNoAssociation()");
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
+			StudentDao studentDao = sqlSession.getMapper(StudentDao.class);
+			return studentDao.selectStudentByNoAssociation(student);
+		}
+	}
 }

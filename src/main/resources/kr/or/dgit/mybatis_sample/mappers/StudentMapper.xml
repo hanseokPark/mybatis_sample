@@ -76,12 +76,12 @@
 	
 	
 	<resultMap id="StudentWithAddressResult" type="Student" extends="StudentResult">
-		<result property="daddress.addrId" column="addr_id"/>
-		<result property="daddress.street" column="street"/>
-		<result property="daddress.city" column="city"/>
-		<result property="daddress.state" column="state"/>
-		<result property="daddress.zip" column="zip"/>
-		<result property="daddress.country" column="country"/>		
+		<result property="address.addrId" column="addr_id"/>
+		<result property="address.street" column="street"/>
+		<result property="address.city" column="city"/>
+		<result property="address.state" column="state"/>
+		<result property="address.zip" column="zip"/>
+		<result property="address.country" column="country"/>		
 	</resultMap>
 	
 	<sql id="selectJoinAddressSql">
@@ -92,6 +92,16 @@
 	<select id ="selectStudentByNoForResultMapExtends"  parameterType="Student" 
 			resultMap="StudentWithAddressResult">
 		<include refid="selectJoinAddressSql" />
+		<include refid="whereSql"></include>
+	</select>
+	
+	
+	<resultMap type="Student" id="studentAssociation" extends="StudentResult">
+		<association property="address" resultMap="kr.or.mybatis_sample.dao.AddressDao.AddressResult"/>
+	</resultMap>
+	
+	<select id="selectStudentByNoAssociation">
+		<include refid="selectJoinAddressSql"></include>
 		<include refid="whereSql"></include>
 	</select>
 	
