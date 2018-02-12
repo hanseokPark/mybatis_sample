@@ -13,7 +13,7 @@ import kr.or.dgit.mybatis_study_util.MyBatisSqlSessionFactory;
 
 public class StudentService {
 	private static final Log log = LogFactory.getLog(StudentService.class);
-	
+
 	public Student findStudentByNo(Student student) {
 		log.debug("findStudentByNo()");
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
@@ -30,7 +30,6 @@ public class StudentService {
 		}
 	}
 
-	
 	public int createStudent(Student student) {
 		log.debug("createStudent()");
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
@@ -40,7 +39,7 @@ public class StudentService {
 			return res;
 		}
 	}
-	
+
 	public int updateStudent(Student student) {
 		log.debug("updateStudent()");
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
@@ -50,7 +49,7 @@ public class StudentService {
 			return res;
 		}
 	}
-	
+
 	public int deleteStudent(int studId) {
 		log.debug("updateStudent()");
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
@@ -58,6 +57,14 @@ public class StudentService {
 			int res = studentDao.deleteStudent(studId);
 			sqlSession.commit();
 			return res;
+		}
+	}
+
+	public List<Student> selectStudentByAllForResultMap() {
+		log.debug("selectStudentByAllForResultMap()");
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
+			StudentDao studentDao = sqlSession.getMapper(StudentDao.class);
+			return studentDao.selectStudentByAllForResultMap();
 		}
 	}
 
