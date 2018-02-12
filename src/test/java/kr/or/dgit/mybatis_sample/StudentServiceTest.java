@@ -94,4 +94,11 @@ public class StudentServiceTest {
 		}
 		
 	}
+	public void test9SelectStudentByNoForResultMapExtendsWithAPI() {
+		Student student = new Student();
+		student.setStudId(1);
+		
+		Student extStdApi = service.selectStudentByNoForResultMapExtendsWithAPI(student);
+		Assert.assertSame(1,extStdApi.getStudId());
+	}
 }

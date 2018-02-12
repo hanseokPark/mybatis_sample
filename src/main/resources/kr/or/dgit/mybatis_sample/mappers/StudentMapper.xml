@@ -74,4 +74,10 @@
 	</select>
 	
 	
+	
+	<select id ="selectStudentByNoForResultMapExtendsWithAPI" parameterType="Student">
+		<include refid="selectJoinAddressSql" />
+		<include refid="whereSql"></include>
+	</select>
+	
 </mapper>
