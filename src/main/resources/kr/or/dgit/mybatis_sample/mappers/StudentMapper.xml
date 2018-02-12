@@ -52,4 +52,22 @@
 		<include refid="deleteSql"></include>
 	</delete>
 	
+	<!--  -->
+	<sql id="selectSql2">
+		SELECT stud_id, name, email, phone, dob FROM students
+	</sql>
+	
+	<resultMap id="StudentResult" type="Student">
+		<id property="studId" column= "stud_id"/>
+		<result property="name" column="studid"/>
+		<result property="email" column="email"/>
+		<result property="phone" column="phone"/>
+		<result property="dob" column="dob"/>
+	</resultMap>
+	
+	<select id="selectStudentByAllWithAPIForResultMap" resultMap="StudentResult">
+		<include refid="selectSql2"/>
+	</select>
+	
+	
 </mapper>

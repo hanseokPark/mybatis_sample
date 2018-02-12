@@ -1,7 +1,6 @@
 package kr.or.dgit.mybatis_sample;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -70,5 +69,12 @@ public class StudentServiceTest {
 	public void test5DeleteStudentWithAPI() {
 		 int deleteStudent = service.deleteStudentWithAPI(4);
 		  Assert.assertSame(1, deleteStudent);
+	}
+	
+	@Test
+	public void test6SelectStudentByAllWithAPIForResultMap() {
+		List<Student> lists = service.selectStudentByAllWithAPIForResultMap();
+		List<Student> lists2 = service.findStudentByAllWithAPI();
+		Assert.assertSame(lists.size(), lists2.size());
 	}
 }
