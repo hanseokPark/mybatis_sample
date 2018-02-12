@@ -73,6 +73,19 @@
 		<include refid="selectSql2"/>
 	</select>
 	
+	<resultMap id="StudentWithAddressResult" type="Student" extends="StudentResult">
+		<result property="daddress.addrId" column="addr_id"/>
+		<result property="daddress.street" column="street"/>
+		<result property="daddress.city" column="city"/>
+		<result property="daddress.state" column="state"/>
+		<result property="daddress.zip" column="zip"/>
+		<result property="daddress.country" column="country"/>		
+	</resultMap>
+	
+	<sql id="selectJoinAddressSql">
+		SELECT stud_id, name, email, phone, A.ADDR_ID, STREET, CITY, STATE, ZIP, COUNTRY
+		FROM students S LEFT OUTER JOIN ADDRESSES A ON S.ADDR_ID=A.ADDR_ID
+	</sql>
 	
 	
 	<select id ="selectStudentByNoForResultMapExtendsWithAPI" parameterType="Student">
