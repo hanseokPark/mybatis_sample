@@ -74,12 +74,12 @@
 	</select>
 	
 	<resultMap id="StudentWithAddressResult" type="Student" extends="StudentResult">
-		<result property="daddress.addrId" column="addr_id"/>
-		<result property="daddress.street" column="street"/>
-		<result property="daddress.city" column="city"/>
-		<result property="daddress.state" column="state"/>
-		<result property="daddress.zip" column="zip"/>
-		<result property="daddress.country" column="country"/>		
+		<result property="address.addrId" column="addr_id"/>
+		<result property="address.street" column="street"/>
+		<result property="address.city" column="city"/>
+		<result property="address.state" column="state"/>
+		<result property="address.zip" column="zip"/>
+		<result property="address.country" column="country"/>		
 	</resultMap>
 	
 	<sql id="selectJoinAddressSql">
@@ -90,6 +90,16 @@
 	
 	<select id ="selectStudentByNoForResultMapExtendsWithAPI" parameterType="Student">
 		<include refid="selectJoinAddressSql" />
+		<include refid="whereSql"></include>
+	</select>
+	
+	<!-- 내포된 결과매핑(ResultMap)을 사용한 일대일 매핑 -->
+	<resultMap type="Student" id="StudentAssociation">
+		<association property="address" resultMap="kr.or.mybatis_sample.dao.AddressDao.AddressResult"/>
+	</resultMap>
+	
+	<select id="selectStudentByNoAssociationWithAPI" parameterType="Student" resultMap="StudentAssociation">
+		<include refid="selectJoinAddressSql"></include>
 		<include refid="whereSql"></include>
 	</select>
 	

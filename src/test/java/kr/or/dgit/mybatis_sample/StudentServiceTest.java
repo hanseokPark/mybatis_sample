@@ -101,4 +101,12 @@ public class StudentServiceTest {
 		Student extStdApi = service.selectStudentByNoForResultMapExtendsWithAPI(student);
 		Assert.assertSame(1,extStdApi.getStudId());
 	}
+	
+	public void test10SelectStudentByNoAssociationWithAPI() {
+		Student student = new Student();
+		student.setStudId(1);
+		
+		Student extStdApi = service.selectStudentByNoAssociationWithAPI(student);
+		Assert.assertSame(1,extStdApi.getStudId());
+	}
 }

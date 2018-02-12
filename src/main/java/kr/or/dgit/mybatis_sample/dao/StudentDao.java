@@ -15,6 +15,8 @@ public interface StudentDao {
 	
 	//resultMap Extends
 	Student selectStudentByNoForResultMapExtendsWithAPI(Student student);
+	//내포된 결과매핑(ResultMap)을 사용한 일대일 매핑
+	Student selectStudentByNoAssociationWithAPI(Student student);
 	// insert
 	int insertStudentWithAPI(Student student);
 	//update
