@@ -9,7 +9,6 @@ import org.apache.ibatis.session.SqlSession;
 
 import kr.or.dgit.mybatis_sample.dao.StudentDao;
 import kr.or.dgit.mybatis_sample.dto.Student;
-import kr.or.dgit.mybatis_sample.service.StudentService;
 import kr.or.dgit.mybatis_study_util.MyBatisSqlSessionFactory;
 
 public class StudentService {

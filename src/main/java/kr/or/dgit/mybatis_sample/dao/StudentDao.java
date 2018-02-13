@@ -28,4 +28,5 @@ public interface StudentDao {
 	//delete
 	int deleteStudent(int studId);
 	
+	
 }
