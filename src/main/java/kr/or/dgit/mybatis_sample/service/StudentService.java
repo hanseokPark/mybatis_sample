@@ -81,4 +81,12 @@ public class StudentService {
 			return studentDao.selectStudentByNoAssociationWithAPI(student);
 		}
 	}
+	
+	public int insertEnumStudentWithAPI(Student student) {
+		log.debug("insertEnumStudentWithAPI()");
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
+			StudentDao studentDao = sqlSession.getMapper(StudentDao.class);
+			return studentDao.insertEnumStudentWithAPI(student);
+		}
+	}
 }

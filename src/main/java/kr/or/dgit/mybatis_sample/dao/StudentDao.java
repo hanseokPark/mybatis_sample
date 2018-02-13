@@ -19,6 +19,8 @@ public interface StudentDao {
 	Student selectStudentByNoAssociationWithAPI(Student student);
 	// insert
 	int insertStudentWithAPI(Student student);
+	// enum 타입 다루기
+	int insertEnumStudentWithAPI(Student student);
 	//update
 	int updateStudentWithAPI(Student student);
 	//delete
