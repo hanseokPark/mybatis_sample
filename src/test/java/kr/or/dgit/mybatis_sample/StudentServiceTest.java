@@ -17,6 +17,7 @@ import org.junit.runners.MethodSorters;
 import kr.or.dgit.mybatis_sample.dto.PhoneNumber;
 import kr.or.dgit.mybatis_sample.dto.Student;
 import kr.or.dgit.mybatis_sample.service.StudentService;
+import kr.or.dgit.mybatis_sample.type.Gender;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class StudentServiceTest {
@@ -121,5 +122,19 @@ public class StudentServiceTest {
 		Student extStd = service.selectStudentByNoForResultMapExtends(student);
 
 		Assert.assertSame(1, extStd.getStudId());
+	}
+	
+	@Test
+	public void testFInsertEnumStudent() {
+		Calendar newDate = GregorianCalendar.getInstance();
+		newDate.set(1990, 2, 28);
+		Student student = new Student();
+		student.setName("test");
+		student.setEmail("test@test.co.kr");
+		student.setDob(newDate.getTime());
+		student.setPhone(new PhoneNumber("010-1234-1234"));
+		student.setGender(Gender.FEMALE);
+		int res = service.insertEnumStudent(student);
+		Assert.assertEquals(1, res);
 	}
 }
