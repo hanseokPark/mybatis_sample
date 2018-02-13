@@ -15,7 +15,7 @@ public class UserPicService {
 	public int insertUserPicWithAPI(UserPic userPic) {
 		log.debug("insertUserPicWithAPI()");
 		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
-			return sqlSession.selectOne(namespace + "insertUserPicWithAPI", userPic);
+			return sqlSession.insert(namespace + "insertUserPicWithAPI", userPic);
 		}
 	}
 	
