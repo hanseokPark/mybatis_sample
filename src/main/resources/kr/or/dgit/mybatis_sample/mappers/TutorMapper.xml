@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.or.dgit.mybatis_sample.dao.TutorDao">
+	<resultMap  id="TutorResult" type="Tutor">
+		<id property="tutorId" column="tutor_id"/>
+		<result property="name" column="tutor_name"></result>
+		<result property="email" column="email"></result>
+		<collection property="courses" resultMap="kr.or.dgit.mybatis_sample.dao.CourseDao.CourseResult"/>		
+	</resultMap>
+	
+	
+	<!-- select -->
+	<sql id="selectSql">
+		select T.TUTOR_ID, T.NAME as TUTOR_NAME, EMAIL, C.COURSE_ID, C.NAME, DESCRIPTION, start_DATE, END_DATE
+		from TUTORS T left outer join ADDRESSES A on T.ADDR_ID=A.ADDR_ID
+		left outer join COURSES C on T.TUTOR_ID=C.TUTOR_ID
+	</sql>
+	
+	<sql id="whereSql">
+		<where>
+			<if test="tutorId != null">
+				T.TUTOR_ID=#{tutorId}
+			</if>
+		</where>	
+	</sql>
+	
+	<select id="selectTutorByTutorId" parameterType="Tutor" resultMap="TutorResult">
+		<include refid="selectSql"></include>
+		<include refid="whereSql"></include>
+	</select>
+	
+</mapper>
