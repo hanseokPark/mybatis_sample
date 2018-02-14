@@ -14,8 +14,18 @@
 		select addr_id, street, city, state, zip, country from addresses
 	</sql>
 	
+	<sql id="selectSqlLimit">
+		select addr_id, street, city, state, zip, country 
+		from addresses
+		limit #{offset}, #{limit};
+	</sql>
+	
 	<select id="selectAddressByAll" resultMap="AddressResult">
 		<include refid="selectSql"></include>
+	</select>
+	
+	<select id="selectAddressLimitByAll" resultMap="AddressResult">
+		<include refid="selectSqlLimit"></include>
 	</select>
 	
 </mapper>
