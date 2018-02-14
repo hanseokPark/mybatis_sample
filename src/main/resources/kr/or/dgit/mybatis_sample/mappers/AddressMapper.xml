@@ -12,9 +12,17 @@
 	<sql id="selectSql">
 		select addr_id, street, city, state, zip, country from addresses
 	</sql>
+	<sql id="selectSql2">
+		select addr_id, street, city, state, zip, country from addresses
+		limit #{offset}, #{limit};
+	</sql>
 	
 	<select id="selectAddressByAllWithAPI" resultMap="AddressResult">
 		<include refid="selectSql" />
+	</select>
+	
+	<select id="selectAddressLimitByAllWithAPI" resultMap="AddressResult">
+		<include refid="selectSql2" />
 	</select>
 	
 </mapper>

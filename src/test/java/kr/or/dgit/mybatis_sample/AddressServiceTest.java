@@ -1,6 +1,8 @@
 package kr.or.dgit.mybatis_sample;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.junit.AfterClass;
@@ -33,5 +35,16 @@ public class AddressServiceTest {
 		RowBounds rowBounds = new RowBounds(0, 3);
 		List<Address> lists = service.selectAddressByAllWithAPI(rowBounds);
 		Assert.assertNotNull(lists);
+	}
+	
+	@Test
+	public void test2FindAddressLimitByAllWithAPI() {
+		Map<String, Integer> maps = new HashMap<>();
+		maps.put("offset",0);
+		maps.put("limit",3);
+		List<Address> lists = service.selectAddressLimitByAllWithAPI(maps);
+		System.out.println(lists.size());
+	    Assert.assertNotNull(lists);
+		
 	}
 }
