@@ -144,7 +144,10 @@
 	
 	
 	
-	
+	<!-- ResultSet 처리방식의 재정의 -->
+	<select id="selectStudentForMapWithAPI" resultMap="StudentGenderResult">
+		<include refid="selectParameterSql"/>
+	</select>
 	
 	
 	
