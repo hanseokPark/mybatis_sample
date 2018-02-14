@@ -20,4 +20,17 @@ public class CourseService {
 			return sqlSession.selectList(namespace + "selectCoursesByConditionWithAPI", map);
 		}
 	}
+	
+	public List<Course> selectCaseCoursesWithAPI(Map<String, Object> map) {
+		log.debug("selectCaseCoursesWithAPI()");
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
+			return sqlSession.selectList(namespace + "selectCaseCoursesWithAPI", map);
+		}
+	}
+	public List<Course> selectWhereCoursesWithAPI(Map<String, Object> map) {
+		log.debug("selectWhereCourses()");
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
+			return sqlSession.selectList(namespace + "selectWhereCourses", map);
+		}
+	}
 }

@@ -9,6 +9,7 @@
 		<result property="endDate" column="end_date"/>
 	</resultMap>
 	
+	<!-- if 조건 -->
 	<sql id="courseSql">
 		SELECT course_id, name, description, start_date, end_date, tutor_Id
 		from courses
@@ -31,4 +32,50 @@
 		<include refid="courseSql" />
 		<include refid="whereSql" />
 	</select>
+	
+	<!-- choose 조건 -->
+	<sql id="chooseSql">
+		<choose>
+			<when test="searchBy=='Tutor'">
+				WHERE TUTOR_ID=#{tutorId}
+			</when>
+			<when test="searchBy=='CourseName'">
+				WHERE name like #{courseName}
+			</when>
+			<otherwise>
+				WHERE end_date &gt;=now()
+			</otherwise>
+		</choose>
+	</sql>
+	<select id="selectCaseCoursesWithAPI" parameterType="map" resultMap="CourseResult">
+		<include refid="courseSql" />
+		<include refid="chooseSql" />
+	</select>
+	
+	
+	<!-- where 조건 -->
+	<sql id="whereSql2">
+		<where>
+			<if test="tutorId != null">
+				TUTOR_ID = #{tutorId}
+			</if>
+			<if test="courseName != null">
+				AND name like #{courseName}
+			</if>
+			<if test="startDate != null">
+				AND start_date &gt;= ${startDate}
+			</if>
+			<if test="endDate != null">
+				AND end_date &lt;=#{endDate}
+			</if>
+		</where>
+	</sql>
+	
+	<select id="selectWhereCourses" parameterType="map" resultMap="CourseResult">
+		<include refid="courseSql" />
+		<include refid="whereSql2" />
+	</select>
+	
+	
+	
 </mapper>
