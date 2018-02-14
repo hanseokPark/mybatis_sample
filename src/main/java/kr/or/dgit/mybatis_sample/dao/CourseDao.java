@@ -10,4 +10,5 @@ public interface CourseDao {
 	List<Course> selectCaseCoursesWithAPI(Map<String, Object> map);
 	List<Course> selectWhereCoursesWithAPI(Map<String, Object> map);
 	List<Course> selectTrimCoursesWithAPI(Map<String, Object> map);
+	List<Course> selectCoursesForeachByTutorsWithAPI(Map<String, Object> map);
 }

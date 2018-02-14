@@ -39,4 +39,10 @@ public class CourseService {
 			return sqlSession.selectList(namespace + "selectTrimCoursesWithAPI", map);
 		}
 	}
+	public List<Course> selectCoursesForeachByTutorsWithAPI(Map<String, Object> map) {
+		log.debug("selectCoursesForeachByTutorsWithAPI()");
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
+			return sqlSession.selectList(namespace + "selectCoursesForeachByTutorsWithAPI", map);
+		}
+	}
 }

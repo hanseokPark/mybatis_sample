@@ -1,5 +1,6 @@
 package kr.or.dgit.mybatis_sample;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -83,6 +84,18 @@ public class CourseServiceTest {
 		map.put("tutorId",1);
 		map.put("courseName","%java%");
 		courses = service.selectTrimCoursesWithAPI(map);
+		Assert.assertNotNull(courses);
+	}
+	@Test
+	public void test5FindCoursesForeachByTutorsWithAPI() {
+		List<Integer> tutorIds = new ArrayList<Integer>();		
+		tutorIds.add(1);
+		tutorIds.add(2);
+		
+		Map<String, Object> map = new HashMap<String, Object>();		
+		map.put("tutorIds",tutorIds);
+		
+		List<Course> courses = service.selectCoursesForeachByTutorsWithAPI(map);
 		Assert.assertNotNull(courses);
 	}
 }

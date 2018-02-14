@@ -97,7 +97,23 @@
 	</select>
 	
 	
+	<!-- foreach 루프 -->
 	
+	<sql id="foreachSql">
+		<if test="tutorIds != null">
+			<where>
+				tutor_id IN
+				<foreach item="tutorId" collection="tutorIds" index="index" open="(" close=")" separator=",">
+					#{tutorId}	
+				</foreach>
+			</where>
+		</if>
+	</sql>
+	
+	<select id="selectCoursesForeachByTutorsWithAPI" parameterType="map" resultMap="CourseResult">
+		<include refid="courseSql"/>
+		<include refid="foreachSql"/>	
+	</select>
 	
 	
 	
