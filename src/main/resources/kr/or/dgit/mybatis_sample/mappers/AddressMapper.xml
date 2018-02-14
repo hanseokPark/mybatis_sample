@@ -9,4 +9,13 @@
 		<result property="zip" column="zip"></result>
 		<result property="country" column="country"></result>
 	</resultMap>
+	
+	<sql id="selectSql">
+		select addr_id, street, city, state, zip, country from addresses
+	</sql>
+	
+	<select id="selectAddressByAll" resultMap="AddressResult">
+		<include refid="selectSql"></include>
+	</select>
+	
 </mapper>
