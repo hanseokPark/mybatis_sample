@@ -8,4 +8,13 @@
 		<result property="phone" column="phone"/>
 		<result property="dob" column="dob"/>
 	</resultMap>	
+	
+	<sql id="selectSql">
+		select addr_id, street, city, state, zip, country from addresses
+	</sql>
+	
+	<select id="selectAddressByAllWithAPI" resultMap="AddressResult">
+		<include refid="selectSql" />
+	</select>
+	
 </mapper>
