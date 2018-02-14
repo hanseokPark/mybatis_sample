@@ -70,4 +70,19 @@ public class CourseServiceTest {
 		map.put("endDate", new Date());
 		courses = service.selectWhereCoursesWithAPI(map);
 	}
+	@Test
+	public void test4FindTrimCoursesWithAPI() {
+		Map<String, Object> map = new HashMap<String, Object>();		
+		List<Course> courses = service.selectTrimCoursesWithAPI(map);
+		Assert.assertNotNull(courses);
+		
+		map.put("tutorId",1);
+		courses = service.selectTrimCoursesWithAPI(map);
+		Assert.assertNotNull(courses);
+		
+		map.put("tutorId",1);
+		map.put("courseName","%java%");
+		courses = service.selectTrimCoursesWithAPI(map);
+		Assert.assertNotNull(courses);
+	}
 }

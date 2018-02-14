@@ -77,5 +77,41 @@
 	</select>
 	
 	
+	<!-- trim 조건 -->
+	<sql id="whereTrimSql">
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<!-- where 자동 추가 -->
+			<if test="tutorId != null">
+				TUTOR_ID=#{tutorId}
+			</if>
+			<!-- 만약 where tutor_id=1 이 추가 된 경우 where 삭제 -->
+			<if test="courseName != null">
+				AND name like #{courseName}
+			</if>
+		</trim>
+	</sql>
+	
+	<select id="selectTrimCoursesWithAPI" parameterType="map" resultMap="CourseResult">
+		<include refid="courseSql"/>
+		<include refid="whereTrimSql"/>	
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 </mapper>
