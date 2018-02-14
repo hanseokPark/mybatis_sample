@@ -99,4 +99,27 @@ public class StudentService {
 			return studentDao.insertEnumStudent(student);
 		}
 	}
+	
+	public Student findAllStudentByParam(String name, String email) {
+		log.debug("selectAllStudentByParam()");
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
+			StudentDao studentDao = sqlSession.getMapper(StudentDao.class);
+			return studentDao.selectAllStudentByParam(name, email);
+		}
+	}
+	
+	public Student findAllStudentByStudent(Student student) {
+		log.debug("selectAllStudentByStudent()");
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
+			StudentDao studentDao = sqlSession.getMapper(StudentDao.class);
+			return studentDao.selectAllStudentByStudent(student);
+		}
+	}
+	public Student findAllStudentByMap(Map<String, String> map) {
+		log.debug("selectAllStudentByMap()");
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();) {
+			StudentDao studentDao = sqlSession.getMapper(StudentDao.class);
+			return studentDao.selectAllStudentByMap(map);
+		}
+	}
 }
