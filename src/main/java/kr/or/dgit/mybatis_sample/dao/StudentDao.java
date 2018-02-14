@@ -17,6 +17,11 @@ public interface StudentDao {
 	Student selectStudentByNoForResultMapExtendsWithAPI(Student student);
 	//내포된 결과매핑(ResultMap)을 사용한 일대일 매핑
 	Student selectStudentByNoAssociationWithAPI(Student student);
+	//여러 개의 입력 파라미터 전달
+	Student selectAllStudentByStudentWithAPI(Student student);
+	Student selectAllStudentByMapWithAPI(Map<String, String> map);
+	
+	
 	// insert
 	int insertStudentWithAPI(Student student);
 	// enum 타입 다루기
