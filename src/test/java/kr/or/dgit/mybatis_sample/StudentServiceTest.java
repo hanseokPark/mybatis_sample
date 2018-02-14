@@ -153,7 +153,7 @@ public class StudentServiceTest {
 		Assert.assertNotNull(student);
 	}	
 	@Test
-	public void testHFindAllStudentByMap() {
+	public void testIFindAllStudentByMap() {
 		Map<String, String> maps = new HashMap<>();
 		maps.put("name", "Timothy");
 		maps.put("email", "timothy@gmail.com");
