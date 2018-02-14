@@ -115,19 +115,4 @@
 		<include refid="foreachSql"/>	
 	</select>
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 </mapper>
